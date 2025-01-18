@@ -7,13 +7,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#22133C"
-        tools:context=".songs.Songs">
+        tools:context=".offline.songs.Songs">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:background="#F44336"
+            android:layout_height="28dp"
+            android:background="#EB3629"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -63,7 +63,7 @@
                     android:layout_marginEnd="6dp"
                     android:src="@drawable/baseline_swap_vert_24_white"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/searchView"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
@@ -72,9 +72,20 @@
                     android:layout_height="24dp"
                     android:layout_marginEnd="6dp"
                     android:src="@drawable/baseline_shuffle_24_white"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@id/searchView"
                     app:layout_constraintEnd_toStartOf="@+id/sortSongs"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/searchView"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:theme="@style/searchView"
+                    android:layout_marginEnd="6dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,4 +1,4 @@
-package com.vishalag53.offlinemusic.playlists
+package com.vishalag53.offlinemusic.offline.playlists
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

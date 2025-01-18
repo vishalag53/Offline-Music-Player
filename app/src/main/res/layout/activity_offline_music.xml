@@ -7,7 +7,7 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".offline.OfflineMusic">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout2"
@@ -17,14 +17,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabLayout"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#EB3629"
+                android:paddingBottom="4dp"
+                android:text="@string/play_music"
+                android:textAlignment="center"
+                android:textColor="#1234F2"
+                android:textSize="16sp"
+                android:textStyle="italic|bold" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="28dp"
+                android:background="#EB3629"
+                app:tabGravity="fill"
                 app:tabIndicatorColor="#1330D1"
                 app:tabIndicatorHeight="4dp"
-                app:tabGravity="fill"
                 app:tabMode="auto"
                 app:tabSelectedTextColor="#1330D1"
                 app:tabTextColor="@color/black" />
@@ -39,6 +50,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appBarLayout2" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
