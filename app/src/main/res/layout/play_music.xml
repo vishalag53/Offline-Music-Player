@@ -5,14 +5,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/playConstraint"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="52dp"
         android:background="@android:color/transparent">
 
         <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="52dp"
-            android:layout_height="52dp"
-            android:layout_marginStart="6dp"
+            android:id="@+id/songImage"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
             android:background="@drawable/rounded_corners_8dp"
             android:paddingTop="4dp"
             android:paddingBottom="4dp"
@@ -26,29 +26,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:gravity="center_vertical"
+            android:singleLine="true"
             android:text="@string/song_name"
             android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/artistsAlbum"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/durationFolder"
+            app:layout_constraintStart_toEndOf="@+id/songImage"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/artistsAlbum"
+            android:id="@+id/durationFolder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginBottom="8dp"
-            android:text="@string/artist_album"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:text="@string/duration_folder_name"
             android:textColor="#E2D8D8"
-            android:textSize="16sp"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView2" />
+            app:layout_constraintStart_toEndOf="@+id/songImage" />
 
         <ImageView
             android:id="@+id/moreMenu"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@drawable/baseline_more_vert_30_white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

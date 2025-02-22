@@ -10,6 +10,7 @@ android {
     defaultConfig {
         applicationId = "com.vishalag53.offlinemusic"
         minSdk = 24
+        //noinspection OldTargetApi
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -18,8 +19,8 @@ android {
     }
 
     buildFeatures {
-        dataBinding = true
         viewBinding = true
+        dataBinding = true
     }
 
     buildTypes {

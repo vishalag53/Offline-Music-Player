@@ -1,5 +1,6 @@
 package com.vishalag53.offlinemusic.offline.player
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
@@ -8,6 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.vishalag53.offlinemusic.R
 import com.vishalag53.offlinemusic.databinding.ActivityPlayerBinding
+import com.vishalag53.offlinemusic.offline.OfflineMusic
 
 class Player : AppCompatActivity() {
 
@@ -26,6 +28,11 @@ class Player : AppCompatActivity() {
         binding.musicPause.setOnClickListener {
             it.visibility = View.INVISIBLE
             binding.musicPlay.visibility = View.VISIBLE
+        }
+
+        binding.closeDown.setOnClickListener {
+            val intent = Intent(this, OfflineMusic::class.java)
+            startActivity(intent)
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.vishalag53.offlinemusic.offline
+package com.vishalag53.offlinemusic.offline.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
