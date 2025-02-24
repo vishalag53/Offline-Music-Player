@@ -24,12 +24,12 @@
                 android:background="@android:color/transparent">
 
                 <ImageButton
-                    android:id="@+id/closeDown"
+                    android:id="@+id/backBtn"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@android:color/transparent"
                     android:contentDescription="@string/minimize_player"
-                    android:src="@drawable/baseline_keyboard_arrow_down_30_white"
+                    android:src="@drawable/drop_down_icon"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -40,7 +40,7 @@
                     android:layout_height="48dp"
                     android:background="@android:color/transparent"
                     android:contentDescription="@string/more"
-                    android:src="@drawable/baseline_more_vert_30_white"
+                    android:src="@drawable/menu_icon"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -104,7 +104,7 @@
                 android:layout_marginStart="10dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/music_speed"
-                android:src="@drawable/baseline_speed_30_white"
+                android:src="@drawable/speed_icon"
                 android:text="@string/play_speed"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -117,7 +117,7 @@
                 android:layout_marginStart="4dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/music_equalizer"
-                android:src="@drawable/baseline_equalizer_30"
+                android:src="@drawable/equalizer_icon"
                 android:text="@string/play_speed"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalCenter"
@@ -132,12 +132,12 @@
                 app:layout_constraintGuide_percent="0.5" />
 
             <ImageButton
-                android:id="@+id/musicTimeStop"
+                android:id="@+id/musicRepeat"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="@android:color/transparent"
-                android:contentDescription="@string/music_time_stop"
-                android:src="@drawable/baseline_access_time_30"
+                android:contentDescription="@string/music_repeat"
+                android:src="@drawable/repeat_icon"
                 android:text="@string/play_speed"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/musicFavorite"
@@ -151,7 +151,7 @@
                 android:layout_marginEnd="10dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/music_add_favourite"
-                android:src="@drawable/baseline_favorite_border_30"
+                android:src="@drawable/favourite_empty_icon"
                 android:text="@string/play_speed"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -175,7 +175,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="10dp"
-                android:progress="12"
+                android:progress="0"
                 android:background="@android:color/transparent"
                 android:progressTint="@color/white"
                 android:thumbTint="@color/white"
@@ -197,7 +197,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <TextView
-                android:id="@+id/musicMinutes"
+                android:id="@+id/musicStartMinutes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -245,7 +245,7 @@
                 android:layout_marginStart="10dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/music_shuffle"
-                android:src="@drawable/baseline_shuffle_30_white"
+                android:src="@drawable/shuffle_icon"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -257,32 +257,19 @@
                 android:layout_marginStart="6dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/play_previous_music"
-                android:src="@drawable/baseline_skip_previous_40_white"
+                android:src="@drawable/previous_icon"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/musicPlay"
+                app:layout_constraintEnd_toStartOf="@+id/musicPlayPause"
                 app:layout_constraintStart_toEndOf="@+id/musicShuffle"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/musicPlay"
+                android:id="@+id/musicPlayPause"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="@android:color/transparent"
-                android:contentDescription="@string/music_play"
-                android:src="@drawable/baseline_play_circle_filled_48"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/musicQueue"
-                app:layout_constraintStart_toEndOf="@+id/musicShuffle"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageButton
-                android:id="@+id/musicPause"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="@android:color/transparent"
-                android:contentDescription="@string/music_pause"
-                android:visibility="invisible"
-                android:src="@drawable/baseline_pause_circle_filled_48"
+                android:contentDescription="@string/music_play_pause"
+                android:src="@drawable/play_circle_icon"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/musicQueue"
                 app:layout_constraintStart_toEndOf="@+id/musicShuffle"
@@ -295,10 +282,10 @@
                 android:layout_marginEnd="6dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/play_next_music"
-                android:src="@drawable/baseline_skip_next_40_white"
+                android:src="@drawable/next_icon"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/musicQueue"
-                app:layout_constraintStart_toEndOf="@+id/musicPlay"
+                app:layout_constraintStart_toEndOf="@+id/musicPlayPause"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
@@ -308,7 +295,7 @@
                 android:layout_marginEnd="10dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/music_queue"
-                android:src="@drawable/baseline_queue_music_30_white"
+                android:src="@drawable/queue_music_icon"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

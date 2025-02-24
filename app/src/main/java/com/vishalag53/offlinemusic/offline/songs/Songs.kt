@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.vishalag53.offlinemusic.databinding.FragmentSongsBinding
-import com.vishalag53.offlinemusic.offline.data.LoadingSongData
+import com.vishalag53.offlinemusic.offline.data.Song
+import com.vishalag53.offlinemusic.offline.data.formatDuration
+import com.vishalag53.offlinemusic.offline.loading.LoadingSongData
 
 class Songs : Fragment() {
 
@@ -18,7 +20,7 @@ class Songs : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentSongsBinding.inflate(inflater)
         return binding.root
@@ -30,11 +32,21 @@ class Songs : Fragment() {
 
         val musicList = LoadingSongData.SongListMA
         binding.totalSongs.text = '(' + musicList.size.toString() + ')'
+        totalSongTime(musicList)
 
         binding.playRecycleView.setHasFixedSize(true)
         binding.playRecycleView.setItemViewCacheSize(10)
         binding.playRecycleView.layoutManager = LinearLayoutManager(this.context)
         songsAdapter = SongsAdapter(requireContext(), musicList)
         binding.playRecycleView.adapter = songsAdapter
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun totalSongTime(musicList: ArrayList<Song>) {
+        var totalTime: Long = 0
+        for(song in musicList) {
+            totalTime += song.duration
+        }
+        binding.totalMusicTime.text = "( " + formatDuration(totalTime) + " )"
     }
 }

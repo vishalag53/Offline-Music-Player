@@ -12,7 +12,9 @@ import com.vishalag53.offlinemusic.R
 import com.vishalag53.offlinemusic.databinding.ActivityOfflineMusicBinding
 import com.vishalag53.offlinemusic.offline.adapter.ViewPagerAdapter
 import com.vishalag53.offlinemusic.offline.player.Player
+import kotlin.system.exitProcess
 
+@Suppress("DEPRECATION")
 class OfflineMusic : AppCompatActivity() {
 
     private lateinit var binding: ActivityOfflineMusicBinding
@@ -50,4 +52,13 @@ class OfflineMusic : AppCompatActivity() {
         }.attach()
     }
 
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        if (!Player.isPlaying && Player.songService != null) {
+//            Player.songService!!.stopForeground(true)
+//            Player.songService!!.mediaPlayer!!.release()
+//            Player.songService = null
+//            exitProcess(1)
+//        }
+//    }
 }

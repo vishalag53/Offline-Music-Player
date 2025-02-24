@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/music_bkg"
-        tools:context=".offline.data.LoadingSongData">
+        tools:context=".offline.loading.LoadingSongData">
 
         <ProgressBar
             android:id="@+id/progressBar"

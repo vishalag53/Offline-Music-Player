@@ -19,7 +19,7 @@
     <string name="music_picture">Music picture</string>
     <string name="music_shuffle">Music Shuffle</string>
     <string name="play_previous_music">Play Previous Music</string>
-    <string name="music_play">Music Play</string>
+    <string name="music_play_pause">Music Play or Pause</string>
     <string name="play_next_music">Play next Music</string>
     <string name="music_queue">Music Queue</string>
     <string name="_00_00">00:00</string>
@@ -28,4 +28,6 @@
     <string name="duration_folder_name">00:00 - Folder name</string>
     <string name="_1">1</string>
     <string name="music_loading">Music Loading</string>
+    <string name="_1_01_0">(1:01:0)</string>
+    <string name="music_repeat">Music Repeat</string>
 </resources>

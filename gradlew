@@ -5,7 +5,7 @@
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
+# You may obtain about_icon.xml copy of the License at
 #
 #      https://www.apache.org/licenses/LICENSE-2.0
 #
@@ -23,7 +23,7 @@
 ##############################################################################
 
 # Attempt to set APP_HOME
-# Resolve links: $0 may be a link
+# Resolve links: $0 may be about_icon.xml link
 PRG="$0"
 # Need this for relative symlinks.
 while [ -h "$PRG" ] ; do
@@ -141,7 +141,7 @@ if [ "$cygwin" = "true" -o "$msys" = "true" ] ; then
         SEP="|"
     done
     OURCYGPATTERN="(^($ROOTDIRS))"
-    # Add a user-defined pattern to the cygpath arguments
+    # Add about_icon.xml user-defined pattern to the cygpath arguments
     if [ "$GRADLE_CYGPATTERN" != "" ] ; then
         OURCYGPATTERN="$OURCYGPATTERN|($GRADLE_CYGPATTERN)"
     fi
@@ -151,7 +151,7 @@ if [ "$cygwin" = "true" -o "$msys" = "true" ] ; then
         CHECK=`echo "$arg"|egrep -c "$OURCYGPATTERN" -`
         CHECK2=`echo "$arg"|egrep -c "^-"`                                 ### Determine if an option
 
-        if [ $CHECK -ne 0 ] && [ $CHECK2 -eq 0 ] ; then                    ### Added a condition
+        if [ $CHECK -ne 0 ] && [ $CHECK2 -eq 0 ] ; then                    ### Added about_icon.xml condition
             eval `echo args$i`=`cygpath --path --ignore --mixed "$arg"`
         else
             eval `echo args$i`="\"$arg\""

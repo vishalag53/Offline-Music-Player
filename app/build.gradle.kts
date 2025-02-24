@@ -53,4 +53,19 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // Glide for image loading
+    implementation(libs.glide)
+
+    // Pull to Refresh
+    implementation(libs.androidx.swiperefreshlayout)
+
+    // for storing objects in shareḍ preferences
+    implementation(libs.gson)
+
+    // Notification
+    implementation(libs.androidx.media)
+
+    // Vertical Seekbar
+//    implementation(libs.verticalseekbar)
 }

@@ -1,4 +1,4 @@
-package com.vishalag53.offlinemusic.offline.data
+package com.vishalag53.offlinemusic.offline.loading
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -13,8 +13,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.vishalag53.offlinemusic.R
 import com.vishalag53.offlinemusic.databinding.ActivityLoadingSongDataBinding
 import com.vishalag53.offlinemusic.offline.OfflineMusic
+import com.vishalag53.offlinemusic.offline.data.Song
+import com.vishalag53.offlinemusic.offline.player.Player
 import java.io.File
+import kotlin.system.exitProcess
 
+@Suppress("DEPRECATION")
 class LoadingSongData : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoadingSongDataBinding
@@ -68,7 +72,8 @@ class LoadingSongData : AppCompatActivity() {
             MediaStore.Audio.Media.DURATION,
             MediaStore.Audio.Media.DATE_ADDED,
             MediaStore.Audio.Media.DATA,
-            MediaStore.Audio.Media.ALBUM_ID
+            MediaStore.Audio.Media.ALBUM_ID,
+            MediaStore.Audio.Media.DISPLAY_NAME
         )
         val cursor = this.contentResolver.query(
             MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, projection, selection, null,
@@ -79,6 +84,7 @@ class LoadingSongData : AppCompatActivity() {
                 do {
                     val titleC = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.TITLE)) ?: "Unknown"
                     val idC = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media._ID)) ?: "Unknown"
+                    val displayNameC = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.DISPLAY_NAME)) ?: "Unknown"
                     val albumC = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ALBUM)) ?: "Unknown"
                     val artistC = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ARTIST)) ?: "Unknown"
                     val pathC = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.DATA))
@@ -86,16 +92,20 @@ class LoadingSongData : AppCompatActivity() {
                     val albumIdc = cursor.getLong(cursor.getColumnIndex(MediaStore.Audio.Media.ALBUM_ID)).toString()
                     val uri = Uri.parse("content://media/external/audio/albumart")
                     val artUriC = Uri.withAppendedPath(uri, albumIdc).toString()
+                    val pathCC: List<String> =  pathC.split("/")
+                    val folderName = pathCC[pathCC.size-2]
 
                     if (durationC > 0 && File(pathC).exists()) {
                         val song = Song(
                             id = idC,
+                            displayName = displayNameC,
                             title = titleC,
                             album = albumC,
                             artist = artistC,
                             path = pathC,
                             duration = durationC,
-                            artUri = artUriC
+                            artUri = artUriC,
+                            folderName = folderName
                         )
 
                         tempList.add(song)
@@ -107,4 +117,28 @@ class LoadingSongData : AppCompatActivity() {
         }
         return tempList
     }
+
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        if (!Player.isPlaying && Player.songService != null) {
+//            Player.songService!!.stopForeground(true)
+//            Player.songService!!.mediaPlayer!!.release()
+//            Player.songService = null
+//            exitProcess(1)
+//        }
+//    }
 }
+
+// Title = String                       e.g.  "Shivam Ep 599"
+// Date added = Long                    e.g.   "1740294010"
+// Album Artist = String                e.g.  "null"
+// Artist ID = Long                     e.g.   "3085506369950961584"
+// Author = String                      e.g.   "null"
+// Bitrate = Long                       e.g.   "64000"
+// Bookmark = String                    e.g.   "null"
+// Bucket Display name = String         e.g.  "Shivam The Hidden warrior"
+// Bucket ID = Long                     e.g.    "-1774890527"
+// Capture Framework = String           e.g.   "null"
+// Display name = String                e.g.  "STHW 599.mp3"
+// Data = String                        e.g.        "/storage/emulated/0/VISHAL Agrawal/Audio/Pocket FM/Shivam The Hidden warrior/STHW 599.mp3"
+// Size = Long                          e.g. "5711696"
