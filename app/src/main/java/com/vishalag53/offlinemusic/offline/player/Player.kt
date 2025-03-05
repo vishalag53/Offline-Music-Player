@@ -37,6 +37,7 @@ import com.vishalag53.offlinemusic.offline.songs.Songs
 import java.io.File
 import kotlin.random.Random
 
+@Suppress("DEPRECATION", "DEPRECATION")
 class Player : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCompletionListener {
 
     companion object {
@@ -395,7 +396,7 @@ class Player : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCompletionL
             val selectedRadioButtonId = radioGroup.checkedRadioButtonId
             val selectedRadioButton =
                 popupViewSleepTimer.findViewById<RadioButton>(selectedRadioButtonId)
-            Player.sleepTimer = selectedRadioButton.text.toString()
+            sleepTimer = selectedRadioButton.text.toString()
             dialogSleepTimer.dismiss()
         }
 
