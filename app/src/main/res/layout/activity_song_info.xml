@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/dice"
+        tools:context=".offline.songInfo.SongInfo">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/songInfoBack"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/song_info_back"
+                    android:src="@drawable/back_icon_24dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="@string/song_info"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/songInfoBack"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appBarLayout">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/musicImage"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/rounded_corners"
+                    android:contentDescription="@string/music_image"
+                    android:src="@drawable/music_note_icon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/songTitleTV"
+                    style="@style/songInfoTextStyleTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/song_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/musicImage"
+                    tools:ignore="TextSizeCheck,TextSizeCheck" />
+
+                <TextView
+                    android:id="@+id/songTitle"
+                    style="@style/songInfoTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/song_title_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/songTitleTV" />
+
+                <TextView
+                    android:id="@+id/songDisplayNameTV"
+                    style="@style/songInfoTextStyleTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/display_name"
+                    android:textColor="#EFEBE9"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/songTitle"
+                    tools:ignore="TextSizeCheck" />
+
+                <TextView
+                    android:id="@+id/songDisplayName"
+                    style="@style/songInfoTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/song_display_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/songDisplayNameTV"
+                    tools:ignore="TextSizeCheck" />
+
+                <TextView
+                    android:id="@+id/songArtistTV"
+                    style="@style/songInfoTextStyleTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/artist"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/songDisplayName"
+                    tools:ignore="TextSizeCheck" />
+
+                <TextView
+                    android:id="@+id/songArtist"
+                    style="@style/songInfoTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/artist_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/songArtistTV"
+                    tools:ignore="TextSizeCheck,TextSizeCheck" />
+
+                <TextView
+                    android:id="@+id/songAlbumTV"
+                    style="@style/songInfoTextStyleTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/album"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/songArtist"
+                    tools:ignore="TextSizeCheck" />
+
+                <TextView
+                    android:id="@+id/songAlbum"
+                    style="@style/songInfoTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/album_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/songAlbumTV"
+                    tools:ignore="TextSizeCheck" />
+
+                <TextView
+                    android:id="@+id/songDurationTV"
+                    style="@style/songInfoTextStyleTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/duration"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/songAlbum"
+                    tools:ignore="TextSizeCheck" />
+
+                <TextView
+                    android:id="@+id/songDuration"
+                    style="@style/songInfoTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_00_00"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/songDurationTV"
+                    tools:ignore="TextSizeCheck" />
+
+                <TextView
+                    android:id="@+id/songSizeTV"
+                    style="@style/songInfoTextStyleTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/songDuration"
+                    tools:ignore="TextSizeCheck" />
+
+                <TextView
+                    android:id="@+id/songSize"
+                    style="@style/songInfoTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_00_00_mb"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/songSizeTV"
+                    tools:ignore="TextSizeCheck" />
+
+                <TextView
+                    android:id="@+id/songBitrateTV"
+                    style="@style/songInfoTextStyleTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bitrate"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/songSize"
+                    tools:ignore="TextSizeCheck" />
+
+                <TextView
+                    android:id="@+id/songBitrate"
+                    style="@style/songInfoTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_320_kbps"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/songBitrateTV"
+                    tools:ignore="TextSizeCheck,VisualLintBounds" />
+
+                <TextView
+                    android:id="@+id/songDateAddedTV"
+                    style="@style/songInfoTextStyleTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/date_added"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/songBitrate"
+                    tools:ignore="TextSizeCheck,VisualLintBounds" />
+
+                <TextView
+                    android:id="@+id/songDateAdded"
+                    style="@style/songInfoTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_01_03_2025_11_11_am"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/songDateAddedTV"
+                    tools:ignore="TextSizeCheck,VisualLintBounds" />
+
+                <TextView
+                    android:id="@+id/songDateModifiedTV"
+                    style="@style/songInfoTextStyleTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/date_modified"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/songDateAdded"
+                    tools:ignore="TextSizeCheck,VisualLintBounds" />
+
+                <TextView
+                    android:id="@+id/songDateModified"
+                    style="@style/songInfoTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_01_03_2025_11_11_am"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/songDateModifiedTV"
+                    tools:ignore="TextSizeCheck,TextSizeCheck,VisualLintBounds" />
+
+                <TextView
+                    android:id="@+id/songFolderNameTV"
+                    style="@style/songInfoTextStyleTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/folder_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/songDateModified"
+                    tools:ignore="TextSizeCheck,VisualLintBounds" />
+
+                <TextView
+                    android:id="@+id/songFolderName"
+                    style="@style/songInfoTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/folder_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/songFolderNameTV"
+                    tools:ignore="TextSizeCheck,TextSizeCheck,VisualLintBounds" />
+
+                <TextView
+                    android:id="@+id/songFilePathTV"
+                    style="@style/songInfoTextStyleTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/file_path"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/songFolderName"
+                    tools:ignore="TextSizeCheck,VisualLintBounds" />
+
+                <TextView
+                    android:id="@+id/songFilePath"
+                    style="@style/songInfoTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/path_address"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/songFilePathTV"
+                    tools:ignore="TextSizeCheck,VisualLintBounds" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

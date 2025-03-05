@@ -6,8 +6,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/music_bkg"
-        tools:context=".offline.OfflineMusic">
+        android:background="@drawable/dice"
+        tools:context=".offline.others.OfflineMusic">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
@@ -18,29 +18,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:paddingBottom="4dp"
-                android:text="@string/play_music"
-                android:textAlignment="center"
-                android:textColor="#651FFF"
-                android:textSize="16sp"
-                android:textStyle="italic|bold" />
-
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayout"
                 android:layout_width="match_parent"
-                android:layout_height="28dp"
+                android:layout_height="48dp"
                 android:background="@android:color/transparent"
+                android:contentDescription="@string/tab_layout"
                 app:tabGravity="fill"
-                app:tabIndicatorColor="#1330D1"
-                app:tabIndicatorHeight="4dp"
+                app:tabIndicatorColor="#72DDFE"
+                app:tabIndicatorHeight="2dp"
                 app:tabMode="auto"
-                app:tabSelectedTextColor="#1330D1"
-                app:tabTextColor="@color/white"
-                tools:ignore="SpeakableTextPresentCheck" />
+                app:tabSelectedTextColor="#72DDFE"
+                app:tabTextAppearance="@style/TabTextStyle"
+                app:tabTextColor="@color/white" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -48,156 +38,128 @@
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@id/playMusic"
+            app:layout_constraintBottom_toTopOf="@id/musicProgressBar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
+        <ProgressBar
+            android:id="@+id/musicProgressBar"
+            style="@android:style/Widget.Material.Light.ProgressBar.Horizontal"
+            android:layout_width="0dp"
+            android:layout_height="4dp"
+            android:indeterminate="false"
+            android:max="100"
+            android:progress="50"
+            android:progressBackgroundTint="#949191"
+            android:progressTint="#276CE4"
+            app:layout_constraintBottom_toTopOf="@id/playMusic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/playMusic"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:background="@drawable/custom_mini_player"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
-            <SeekBar
-                android:id="@+id/seekBar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:progress="0"
-                android:progressTint="@color/white"
-                android:thumbTint="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
+            <ImageView
+                android:id="@+id/musicImage"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:contentDescription="@string/music_image"
+                android:scaleType="centerInside"
+                android:src="@drawable/music_note_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ImageContrastCheck" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
+            <TextView
+                android:id="@+id/musicDisplayFolderName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="4dp"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:maxLines="1"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:text="@string/name_folder"
+                android:textColor="#F9FBE7"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/musicPlayPrevious"
+                app:layout_constraintStart_toEndOf="@id/musicImage"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/musicPosition"
+                android:layout_width="0dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
                 android:layout_marginBottom="10dp"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="@string/_1_100"
+                android:textColor="#C0C1C1"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/musicPlayPrevious"
+                app:layout_constraintStart_toEndOf="@id/musicImage"
+                tools:ignore="TextSizeCheck,TextContrastCheck" />
+
+            <ImageButton
+                android:id="@+id/musicPlayPrevious"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/play_previous_music"
+                android:scaleType="centerInside"
+                android:src="@drawable/previous_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/musicPlayPauseBTN"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ImageContrastCheck,TouchTargetSizeCheck" />
+
+            <ImageButton
+                android:id="@+id/musicPlayPauseBTN"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/music_play_pause"
+                android:scaleType="centerInside"
+                android:src="@drawable/play_circle_outline_30"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/musicPlayNext"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ImageContrastCheck,TouchTargetSizeCheck" />
+
+            <ImageButton
+                android:id="@+id/musicPlayNext"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="4dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/play_next_music"
+                android:scaleType="centerInside"
+                android:src="@drawable/next_icon"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/seekBar">
-
-                <ImageView
-                    android:id="@+id/songImage"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="8dp"
-                    android:paddingTop="4dp"
-                    android:paddingBottom="4dp"
-                    android:src="@drawable/music_note_icon"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="ContentDescription,ImageContrastCheck,VisualLintBounds" />
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/musicControl"
-                    app:layout_constraintStart_toEndOf="@id/songImage"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TextView
-                        android:id="@+id/songName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:gravity="center_vertical"
-                        android:singleLine="true"
-                        android:text="@string/song_name"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintBottom_toTopOf="@+id/durationFolder"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/durationFolder"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:gravity="center_vertical"
-                        android:singleLine="true"
-                        android:text="@string/duration_folder_name"
-                        android:textColor="#E2D8D8"
-                        android:textSize="12sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/musicControl"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/queue"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageView
-                        android:id="@+id/playMusicPrevious"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:src="@drawable/previous_icon"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/musicPlayPause"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="ContentDescription" />
-
-                    <ImageView
-                        android:id="@+id/musicPlayPause"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:src="@drawable/play_circle_icon"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/playMusicNext"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="ContentDescription" />
-
-                    <ImageView
-                        android:id="@+id/playMusicNext"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:src="@drawable/next_icon"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="ContentDescription" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/queue"
-                    android:layout_width="48dp"
-                    android:layout_height="match_parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/_1"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>

@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_background_top"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/horizontalRule"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/songDetail"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-10dp"
+                    android:layout_marginBottom="-10dp"
+                    android:contentDescription="@string/horizontal_rule"
+                    android:src="@drawable/horizontal_rule"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/songDetail"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/horizontalRule">
+
+                <TextView
+                    android:id="@+id/displayName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="4dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="@string/display_name"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline1"
+                    app:layout_constraintEnd_toStartOf="@+id/musicInfo"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/horizontalGuideline1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <TextView
+                    android:id="@+id/totalTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/_00_00"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/horizontalGuideline1"
+                    app:layout_constraintVertical_bias="0.238" />
+
+                <TextView
+                    android:id="@+id/musicSize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/size"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/musicInfo"
+                    app:layout_constraintHorizontal_bias="0.115"
+                    app:layout_constraintStart_toEndOf="@id/totalTime"
+                    app:layout_constraintTop_toBottomOf="@id/horizontalGuideline1"
+                    app:layout_constraintVertical_bias="0.257" />
+
+                <ImageButton
+                    android:id="@+id/musicInfo"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/music_info"
+                    android:src="@drawable/about_icon"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.6dp"
+                    android:background="#807F7F"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl1"
+                android:layout_width="match_parent"
+                android:layout_height="96dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/songDetail">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/verticalGuideline1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.25" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/verticalGuideline2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/verticalGuideline3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.75" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/horizontalGuideline2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <ImageButton
+                    android:id="@+id/musicEqualizer"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/round_background"
+                    android:contentDescription="@string/equalizer"
+                    android:src="@drawable/equalizer_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline2"
+                    app:layout_constraintEnd_toStartOf="@+id/verticalGuideline1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="DuplicateSpeakableTextCheck" />
+
+                <TextView
+                    android:id="@+id/musicEqualizerTV"
+                    style="@style/textStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/equalizer"
+                    app:layout_constraintEnd_toStartOf="@+id/verticalGuideline1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/horizontalGuideline2" />
+
+                <ImageButton
+                    android:id="@+id/musicFavorite"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/round_background"
+                    android:contentDescription="@string/music_add_favourite"
+                    android:src="@drawable/favourite_empty_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline2"
+                    app:layout_constraintEnd_toStartOf="@+id/verticalGuideline2"
+                    app:layout_constraintStart_toStartOf="@id/verticalGuideline1"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/musicFavoriteTV"
+                    style="@style/textStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/favourite"
+                    app:layout_constraintEnd_toStartOf="@+id/verticalGuideline2"
+                    app:layout_constraintStart_toStartOf="@id/verticalGuideline1"
+                    app:layout_constraintTop_toTopOf="@id/horizontalGuideline2" />
+
+                <ImageButton
+                    android:id="@+id/musicShuffle"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/round_background"
+                    android:contentDescription="@string/music_shuffle"
+                    android:src="@drawable/shuffle_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline2"
+                    app:layout_constraintEnd_toEndOf="@id/verticalGuideline3"
+                    app:layout_constraintStart_toStartOf="@id/verticalGuideline2"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ImageContrastCheck" />
+
+                <TextView
+                    android:id="@+id/musicShuffleTV"
+                    style="@style/textStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/shuffle"
+                    app:layout_constraintEnd_toStartOf="@+id/verticalGuideline3"
+                    app:layout_constraintStart_toStartOf="@id/verticalGuideline2"
+                    app:layout_constraintTop_toTopOf="@id/horizontalGuideline2" />
+
+                <ImageButton
+                    android:id="@+id/musicRepeat"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/round_background"
+                    android:contentDescription="@string/music_repeat"
+                    android:src="@drawable/repeat_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/verticalGuideline3"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/musicRepeatTV"
+                    style="@style/textStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/repeat"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/verticalGuideline3"
+                    app:layout_constraintTop_toTopOf="@id/horizontalGuideline2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl2"
+                android:layout_width="match_parent"
+                android:layout_height="96dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cl1">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/verticalGuideline4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.25" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/verticalGuideline5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/verticalGuideline6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.75" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/horizontalGuideline3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <ImageButton
+                    android:id="@+id/musicSleepTime"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/round_background"
+                    android:contentDescription="@string/music_sleep_timer"
+                    android:src="@drawable/timer_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline3"
+                    app:layout_constraintEnd_toEndOf="@+id/verticalGuideline4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/musicSleepTimeTV"
+                    style="@style/textStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sleep_timer"
+                    app:layout_constraintEnd_toEndOf="@+id/verticalGuideline4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/horizontalGuideline3" />
+
+                <ImageButton
+                    android:id="@+id/musicVolume"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/round_background"
+                    android:contentDescription="@string/music_volume"
+                    android:src="@drawable/volume_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline3"
+                    app:layout_constraintEnd_toEndOf="@+id/verticalGuideline5"
+                    app:layout_constraintStart_toStartOf="@id/verticalGuideline4"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/musicVolumeTV"
+                    style="@style/textStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/volume"
+                    app:layout_constraintEnd_toEndOf="@+id/verticalGuideline5"
+                    app:layout_constraintStart_toStartOf="@id/verticalGuideline4"
+                    app:layout_constraintTop_toTopOf="@id/horizontalGuideline3" />
+
+                <ImageButton
+                    android:id="@+id/musicShare"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/round_background"
+                    android:contentDescription="@string/music_share"
+                    android:src="@drawable/share_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline3"
+                    app:layout_constraintEnd_toEndOf="@id/verticalGuideline6"
+                    app:layout_constraintStart_toStartOf="@id/verticalGuideline5"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/musicShareTV"
+                    style="@style/textStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/share"
+                    app:layout_constraintEnd_toEndOf="@+id/verticalGuideline6"
+                    app:layout_constraintStart_toStartOf="@id/verticalGuideline5"
+                    app:layout_constraintTop_toTopOf="@id/horizontalGuideline3" />
+
+                <ImageButton
+                    android:id="@+id/musicDelete"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/round_background"
+                    android:contentDescription="@string/music_delete"
+                    android:src="@drawable/delete_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/verticalGuideline6"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/musicDeleteTV"
+                    style="@style/textStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/delete"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/verticalGuideline6"
+                    app:layout_constraintTop_toTopOf="@id/horizontalGuideline3" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl3"
+                android:layout_width="match_parent"
+                android:layout_height="96dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cl2">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/verticalGuideline7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.25" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/verticalGuideline8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/verticalGuideline9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.75" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/horizontalGuideline4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <ImageButton
+                    android:id="@+id/musicAddToNewPlaylist"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/round_background"
+                    android:contentDescription="@string/add_to_new_playlist"
+                    android:src="@drawable/playlist_add_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline4"
+                    app:layout_constraintEnd_toEndOf="@+id/verticalGuideline7"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="DuplicateSpeakableTextCheck" />
+
+                <TextView
+                    android:id="@+id/musicAddToNewPlaylistTV"
+                    style="@style/textStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_to_new_playlist"
+                    app:layout_constraintEnd_toEndOf="@+id/verticalGuideline7"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/horizontalGuideline4" />
+
+                <ImageButton
+                    android:id="@+id/musicUseAsARingtone"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/round_background"
+                    android:contentDescription="@string/use_as_a_ringtone"
+                    android:src="@drawable/ringtone_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline4"
+                    app:layout_constraintEnd_toEndOf="@+id/verticalGuideline8"
+                    app:layout_constraintStart_toStartOf="@id/verticalGuideline7"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="DuplicateSpeakableTextCheck" />
+
+                <TextView
+                    android:id="@+id/musicUseAsARingtoneTV"
+                    style="@style/textStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/use_as_a_ringtone"
+                    app:layout_constraintEnd_toEndOf="@+id/verticalGuideline8"
+                    app:layout_constraintStart_toStartOf="@id/verticalGuideline7"
+                    app:layout_constraintTop_toTopOf="@id/horizontalGuideline4" />
+
+                <ImageButton
+                    android:id="@+id/musicLyric"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/round_background"
+                    android:contentDescription="@string/lyric"
+                    android:src="@drawable/lyrics_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline4"
+                    app:layout_constraintEnd_toEndOf="@id/verticalGuideline9"
+                    app:layout_constraintStart_toStartOf="@id/verticalGuideline8"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="DuplicateSpeakableTextCheck" />
+
+                <TextView
+                    android:id="@+id/musicLyricTV"
+                    style="@style/textStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lyric"
+                    app:layout_constraintEnd_toEndOf="@+id/verticalGuideline9"
+                    app:layout_constraintStart_toStartOf="@id/verticalGuideline8"
+                    app:layout_constraintTop_toTopOf="@id/horizontalGuideline4" />
+
+                <ImageButton
+                    android:id="@+id/musicRename"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/round_background"
+                    android:contentDescription="@string/rename"
+                    android:src="@drawable/rename_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/verticalGuideline9"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="DuplicateSpeakableTextCheck" />
+
+                <TextView
+                    android:id="@+id/musicRenameTV"
+                    style="@style/textStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rename"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/verticalGuideline9"
+                    app:layout_constraintTop_toTopOf="@id/horizontalGuideline4" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>

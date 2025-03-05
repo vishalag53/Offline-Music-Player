@@ -10,36 +10,33 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import com.vishalag53.offlinemusic.R
 import com.vishalag53.offlinemusic.databinding.ActivityLoadingSongDataBinding
-import com.vishalag53.offlinemusic.offline.OfflineMusic
-import com.vishalag53.offlinemusic.offline.data.Song
-import com.vishalag53.offlinemusic.offline.player.Player
+import com.vishalag53.offlinemusic.offline.others.OfflineMusic
+import com.vishalag53.offlinemusic.offline.others.Song
+import com.vishalag53.offlinemusic.offline.songs.Songs
 import java.io.File
-import kotlin.system.exitProcess
 
-@Suppress("DEPRECATION")
 class LoadingSongData : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoadingSongDataBinding
 
     companion object {
-        lateinit var SongListMA: ArrayList<Song>
+        lateinit var songListMA: ArrayList<Song>
     }
 
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setTheme(R.style.Theme_OfflineMusic)
         binding = ActivityLoadingSongDataBinding.inflate(layoutInflater)
         setContentView(binding.root)
         requestRuntimePermission()
+        Songs.searchSF = false
     }
 
     @RequiresApi(Build.VERSION_CODES.R)
     private val permissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
         if (isGranted) {
-            SongListMA = getAllAudio()
+            songListMA = getAllAudio()
             val intent = Intent(this, OfflineMusic::class.java)
             startActivity(intent)
             finish()
@@ -71,9 +68,12 @@ class LoadingSongData : AppCompatActivity() {
             MediaStore.Audio.Media.ARTIST,
             MediaStore.Audio.Media.DURATION,
             MediaStore.Audio.Media.DATE_ADDED,
+            MediaStore.Audio.Media.DATE_MODIFIED,
             MediaStore.Audio.Media.DATA,
             MediaStore.Audio.Media.ALBUM_ID,
-            MediaStore.Audio.Media.DISPLAY_NAME
+            MediaStore.Audio.Media.DISPLAY_NAME,
+            MediaStore.Audio.Media.SIZE,
+            MediaStore.Audio.Media.BITRATE
         )
         val cursor = this.contentResolver.query(
             MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, projection, selection, null,
@@ -88,7 +88,11 @@ class LoadingSongData : AppCompatActivity() {
                     val albumC = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ALBUM)) ?: "Unknown"
                     val artistC = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ARTIST)) ?: "Unknown"
                     val pathC = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.DATA))
+                    val dateAddedC = cursor.getLong(cursor.getColumnIndex(MediaStore.Audio.Media.DATE_ADDED))
+                    val dateModifiedC = cursor.getLong(cursor.getColumnIndex(MediaStore.Audio.Media.DATE_MODIFIED))
                     val durationC = cursor.getLong(cursor.getColumnIndex(MediaStore.Audio.Media.DURATION))
+                    val bitrateC = cursor.getLong(cursor.getColumnIndex(MediaStore.Audio.Media.BITRATE))
+                    val sizeC = cursor.getLong(cursor.getColumnIndex(MediaStore.Audio.Media.SIZE))
                     val albumIdc = cursor.getLong(cursor.getColumnIndex(MediaStore.Audio.Media.ALBUM_ID)).toString()
                     val uri = Uri.parse("content://media/external/audio/albumart")
                     val artUriC = Uri.withAppendedPath(uri, albumIdc).toString()
@@ -101,11 +105,15 @@ class LoadingSongData : AppCompatActivity() {
                             displayName = displayNameC,
                             title = titleC,
                             album = albumC,
+                            dateAdded = dateAddedC,
+                            dateModified = dateModifiedC,
                             artist = artistC,
                             path = pathC,
                             duration = durationC,
                             artUri = artUriC,
-                            folderName = folderName
+                            folderName = folderName,
+                            size = sizeC,
+                            bitrate = bitrateC
                         )
 
                         tempList.add(song)
@@ -128,17 +136,3 @@ class LoadingSongData : AppCompatActivity() {
 //        }
 //    }
 }
-
-// Title = String                       e.g.  "Shivam Ep 599"
-// Date added = Long                    e.g.   "1740294010"
-// Album Artist = String                e.g.  "null"
-// Artist ID = Long                     e.g.   "3085506369950961584"
-// Author = String                      e.g.   "null"
-// Bitrate = Long                       e.g.   "64000"
-// Bookmark = String                    e.g.   "null"
-// Bucket Display name = String         e.g.  "Shivam The Hidden warrior"
-// Bucket ID = Long                     e.g.    "-1774890527"
-// Capture Framework = String           e.g.   "null"
-// Display name = String                e.g.  "STHW 599.mp3"
-// Data = String                        e.g.        "/storage/emulated/0/VISHAL Agrawal/Audio/Pocket FM/Shivam The Hidden warrior/STHW 599.mp3"
-// Size = Long                          e.g. "5711696"

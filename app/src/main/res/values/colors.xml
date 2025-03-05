@@ -3,4 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="bkg_color">#22133C</color>
+    <color name="bkg">#052643</color>
+    <color name="click_icon_color">#0028FF</color>
+    <color name="unselect_color">#898686</color>
 </resources>

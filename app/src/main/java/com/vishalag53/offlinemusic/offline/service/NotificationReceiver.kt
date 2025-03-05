@@ -3,55 +3,43 @@ package com.vishalag53.offlinemusic.offline.service
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.vishalag53.offlinemusic.R
-import com.vishalag53.offlinemusic.offline.data.setSongPosition
-import com.vishalag53.offlinemusic.offline.player.Player.Companion.isPlaying
-import com.vishalag53.offlinemusic.offline.player.Player.Companion.playerBinding
-import com.vishalag53.offlinemusic.offline.player.Player.Companion.songListPA
-import com.vishalag53.offlinemusic.offline.player.Player.Companion.songPosition
-import com.vishalag53.offlinemusic.offline.player.Player.Companion.songService
-import kotlin.system.exitProcess
+import com.vishalag53.offlinemusic.offline.others.OfflineMusic
+import com.vishalag53.offlinemusic.offline.others.exitApplication
+import com.vishalag53.offlinemusic.offline.others.setPauseIcon
+import com.vishalag53.offlinemusic.offline.others.setPlayIcon
+import com.vishalag53.offlinemusic.offline.others.setSongPosition
+import com.vishalag53.offlinemusic.offline.player.Player
 
-@Suppress("DEPRECATION")
 class NotificationReceiver: BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
         when (intent?.action) {
             ApplicationClass.PREVIOUS -> prevNextSong(false, context!!)
-            ApplicationClass.PLAY -> if (isPlaying) pauseMusic() else playMusic()
+            ApplicationClass.PLAY -> if (Player.isPlaying) pauseMusic() else playMusic()
             ApplicationClass.NEXT -> prevNextSong(true, context!!)
-            ApplicationClass.EXIT -> {
-                songService!!.stopForeground(true)
-                songService!!.mediaPlayer!!.release()
-                songService = null
-                exitProcess(1)
-            }
+            ApplicationClass.EXIT -> exitApplication()
         }
     }
 
     private fun playMusic() {
-        isPlaying = true
-        songService!!.mediaPlayer!!.start()
-        songService!!.showNotification(R.drawable.pause_circle_icon)
-        playerBinding.musicPlayPause.setImageResource(R.drawable.pause_circle_icon)
+        Player.isPlaying = true
+        Player.songService!!.mediaPlayer!!.start()
+        setPauseIcon()
     }
 
     private fun pauseMusic() {
-        isPlaying = false
-        songService!!.mediaPlayer!!.pause()
-        songService!!.showNotification(R.drawable.play_circle_icon)
-        playerBinding.musicPlayPause.setImageResource(R.drawable.play_circle_icon)
+        Player.isPlaying = false
+        Player.songService!!.mediaPlayer!!.pause()
+        setPlayIcon()
     }
 
     private fun prevNextSong(increment: Boolean, context: Context) {
         setSongPosition(increment)
-        songService!!.createMediaPlayer()
-        Glide.with(context)
-            .load(songListPA[songPosition].artUri)
-            .apply(RequestOptions().placeholder(R.drawable.music_note_icon))
-            .into(playerBinding.musicImage)
-        playerBinding.musicTitle.text = songListPA[songPosition].title
+        Player.songService!!.createMediaPlayer()
+        Player.playerBinding.musicDisplayFolderName.text = context.getString(R.string.two_string_text, Player.songListPA[Player.songPosition].displayName, Player.songListPA[Player.songPosition].folderName)
+        OfflineMusic.offlineMusicBinding.musicDisplayFolderName.text = context.getString(R.string.two_string_text, Player.songListPA[Player.songPosition].displayName, Player.songListPA[Player.songPosition].folderName)
+        OfflineMusic.offlineMusicBinding.musicPosition.text = context.getString(R.string.song_position, Player.songPosition + 1, Player.songListPA.size)
+        Player.songService!!.mediaPlayer!!.playbackParams = Player.songService!!.mediaPlayer!!.playbackParams.setSpeed(Player.playback_speed)
         playMusic()
     }
 }

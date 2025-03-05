@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/round_background_top">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/horizontalRule"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-10dp"
+            android:layout_marginBottom="-10dp"
+            android:contentDescription="@string/horizontal_rule"
+            android:src="@drawable/horizontal_rule"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="VisualLintBounds" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/playbackSpeed"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:paddingBottom="16dp"
+        android:text="@string/playback_speed_1_0x"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/horizontalRule" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/playbackSpeed"
+        tools:ignore="TextSizeCheck">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/verticalGuideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.25" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/verticalGuideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/verticalGuideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.75" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizontalGuideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.25" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizontalGuideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizontalGuideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.75" />
+
+        <TextView
+            android:id="@+id/playbackSpeed0.25"
+            style="@style/playbackSpeedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_0_25x"
+            app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline1"
+            app:layout_constraintEnd_toEndOf="@id/verticalGuideline1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/playbackSpeed0.5"
+            style="@style/playbackSpeedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_0_5x"
+            app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline1"
+            app:layout_constraintEnd_toEndOf="@id/verticalGuideline2"
+            app:layout_constraintStart_toStartOf="@id/verticalGuideline1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/playbackSpeed0.75"
+            style="@style/playbackSpeedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_0_75x"
+            app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline1"
+            app:layout_constraintEnd_toEndOf="@id/verticalGuideline3"
+            app:layout_constraintStart_toStartOf="@id/verticalGuideline2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/playbackSpeed1"
+            style="@style/playbackSpeedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_1_0x"
+            app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/verticalGuideline3"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/playbackSpeed1.25"
+            style="@style/playbackSpeedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_1_25x"
+            app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline2"
+            app:layout_constraintEnd_toEndOf="@id/verticalGuideline1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/horizontalGuideline1" />
+
+        <TextView
+            android:id="@+id/playbackSpeed1.5"
+            style="@style/playbackSpeedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_1_5x"
+            app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline2"
+            app:layout_constraintEnd_toEndOf="@id/verticalGuideline2"
+            app:layout_constraintStart_toStartOf="@id/verticalGuideline1"
+            app:layout_constraintTop_toTopOf="@id/horizontalGuideline1" />
+
+        <TextView
+            android:id="@+id/playbackSpeed1.75"
+            style="@style/playbackSpeedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_1_75x"
+            app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline2"
+            app:layout_constraintEnd_toEndOf="@id/verticalGuideline3"
+            app:layout_constraintStart_toStartOf="@id/verticalGuideline2"
+            app:layout_constraintTop_toTopOf="@id/horizontalGuideline1" />
+
+        <TextView
+            android:id="@+id/playbackSpeed2"
+            style="@style/playbackSpeedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_2_0x"
+            app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/verticalGuideline3"
+            app:layout_constraintTop_toTopOf="@id/horizontalGuideline1" />
+
+        <TextView
+            android:id="@+id/playbackSpeed2.25"
+            style="@style/playbackSpeedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_2_25x"
+            app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline3"
+            app:layout_constraintEnd_toEndOf="@id/verticalGuideline1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/horizontalGuideline2" />
+
+        <TextView
+            android:id="@+id/playbackSpeed2.5"
+            style="@style/playbackSpeedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_2_5x"
+            app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline3"
+            app:layout_constraintEnd_toEndOf="@id/verticalGuideline2"
+            app:layout_constraintStart_toStartOf="@id/verticalGuideline1"
+            app:layout_constraintTop_toTopOf="@id/horizontalGuideline2" />
+
+        <TextView
+            android:id="@+id/playbackSpeed2.75"
+            style="@style/playbackSpeedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_2_75x"
+            app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline3"
+            app:layout_constraintEnd_toEndOf="@id/verticalGuideline3"
+            app:layout_constraintStart_toStartOf="@id/verticalGuideline2"
+            app:layout_constraintTop_toTopOf="@id/horizontalGuideline2" />
+
+        <TextView
+            android:id="@+id/playbackSpeed3"
+            style="@style/playbackSpeedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_3_0x"
+            app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/verticalGuideline3"
+            app:layout_constraintTop_toTopOf="@id/horizontalGuideline2" />
+
+        <TextView
+            android:id="@+id/playbackSpeed3.25"
+            style="@style/playbackSpeedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_3_25x"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/verticalGuideline1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/horizontalGuideline3" />
+
+        <TextView
+            android:id="@+id/playbackSpeed3.5"
+            style="@style/playbackSpeedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_3_5x"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/verticalGuideline2"
+            app:layout_constraintStart_toStartOf="@id/verticalGuideline1"
+            app:layout_constraintTop_toTopOf="@id/horizontalGuideline3" />
+
+        <TextView
+            android:id="@+id/playbackSpeed3.75"
+            style="@style/playbackSpeedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_3_75x"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/verticalGuideline3"
+            app:layout_constraintStart_toStartOf="@id/verticalGuideline2"
+            app:layout_constraintTop_toTopOf="@id/horizontalGuideline3" />
+
+        <TextView
+            android:id="@+id/playbackSpeed4"
+            style="@style/playbackSpeedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_4_0x"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/verticalGuideline3"
+            app:layout_constraintTop_toTopOf="@id/horizontalGuideline3" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
